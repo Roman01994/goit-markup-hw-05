@@ -14,11 +14,13 @@
 	--social-list-hover-footer:#31D0AA;
 	--thumb-bg-color:#f5f4fa;
 	--modal-bg-color:#FCFCFC;
+	--product-overlay-bg-color:#4D5AE5;
 }
 
 /* Global styles */
 
 body {
+	
 	font-family: "Roboto", sans-serif;
 	font-weight: 400;
 	font-size: 16px;
@@ -56,9 +58,7 @@ body {
 	padding-left: 15px;
 }
 
-.button {
-	cursor: pointer;
-}
+
 h1,
 h2,
 h3,
@@ -73,10 +73,9 @@ ul {
 
 /* Nav Section  */
 .page {
-
-	border-bottom: 1px solid var(--footer-inf-color);
+    border-bottom: 1px solid var(--footer-inf-color);
 	box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 1px 6px rgba(46, 47, 66, 0.08);
-
+    
 }
 
 .page .container {
@@ -249,6 +248,7 @@ address {
 	background-color: var(--active-nav-color);
 }
 
+
 /* /Hero section */
 
 /* Advantages section */
@@ -258,7 +258,7 @@ address {
 	justify-content: center;
 	width: 264px;
 	height: 112px;
-	padding-bottom: 8px;
+	margin-bottom: 8px;
 	background-color: var(--thumb-bg-color);
 }
 .advantages-list {
@@ -343,9 +343,12 @@ address {
 	box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
 	border-radius: 0px 0px 4px 4px;
 }
+
 .team-list .list-information {
 	padding: 32px 16px;
+	
 }
+
 
 .team-list .item:not(:last-child) {
 	margin-right: 24px;
@@ -523,6 +526,9 @@ address {
 	border-radius: 4px;
 	border: none;
 	cursor: pointer;
+	transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .portfolio .active {
@@ -537,6 +543,47 @@ address {
 	background-color: var(--active-nav-color);
 	box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
 }
+
+.product-thumb{
+	position: relative;
+	overflow:hidden;
+}
+
+.product-overlay{
+	position: absolute;
+	top: 0;
+    left: 0;
+	width: 100%;
+	height: 100%;
+	
+	background-color: var(--product-overlay-bg-color);
+
+	transform: translateY(100%);
+	transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-list .link:hover .product-overlay,
+.portfolio-list .link:focus .product-overlay {
+	transform:translateY(0);
+}
+
+.thumb-description{
+	position: absolute;
+	/* top:40px;
+	left: 32px; */
+	top:50%;
+	left: 50%;
+	transform: translate(-50%, -100%);
+	width: 296px;
+	height: 96px;
+	color: var(--section-team-bg-color);
+
+	font-size: 16px;
+	line-height: 1.5;
+	letter-spacing: 0.02em;
+	z-index: 2;
+}
+
 .portfolio-list img {
 	vertical-align: bottom;
 }
@@ -550,8 +597,14 @@ address {
 	margin-bottom: 48px;
 }
 
-.portfolio-list .item:hover,
-.portfolio-list .item:focus {
+.portfolio-list .link {
+	display: block;
+	transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+	
+	color: inherit;
+}
+.portfolio-list .link:hover,
+.portfolio-list .link:focus {
  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
 
 }
@@ -587,6 +640,7 @@ address {
 
 /* /Portfolio section*/
 
+
 /* Modal window */
 .backdrop{
 	position:fixed;
@@ -605,22 +659,23 @@ address {
 	visibility: hidden;
 }
 .backdrop.is-hidden .modal{
-	transform: translate(-50%, -50%) scale(1);
+	transform: translate(-50%, -61%) scale(1);
 }
 
 .modal{
 	position: absolute;
 	top: 50%;
 	left: 50%;
+	transform: translate(-50%, -61%) scale(1);
+    
 	min-width: 408px;
 	min-height: 576px;
-	padding: 8px;
-	transform: translate(-50%, -50%) scale(1);
+	padding: 24px;
 
 	background: var(--modal-bg-color);
-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
-border-radius: 4px;
-transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1)
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
+	border-radius: 4px;
+	transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1)
 
 }
 
@@ -629,8 +684,10 @@ transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1)
 	top: 24px;
 	right: 24px;
 	border-radius: 50%;
+
 	width: 24px;
 	height: 24px;
+	
     background: var(--button-secondary-border-color);
 	border: 1px solid rgba(0, 0, 0, 0.1);
 
