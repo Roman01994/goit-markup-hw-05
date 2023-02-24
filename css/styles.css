@@ -659,14 +659,14 @@ address {
 	visibility: hidden;
 }
 .backdrop.is-hidden .modal{
-	transform: translate(-50%, -61%) scale(1);
+	transform: translate(-50%, -50%) scale(1);
 }
 
 .modal{
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%, -61%) scale(1);
+	transform: translate(-50%, -50%) scale(1);
     
 	min-width: 408px;
 	min-height: 576px;
