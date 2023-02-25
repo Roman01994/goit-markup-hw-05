@@ -57,7 +57,9 @@ body {
 	padding-right: 15px;
 	padding-left: 15px;
 }
-
+button{
+	cursor:pointer;
+}
 
 h1,
 h2,
